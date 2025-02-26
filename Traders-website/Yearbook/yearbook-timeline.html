@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="yearbook-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>The Previous Traders Yearbook</title>
+</head>
+
+<body>
+    <nav id="navbar">
+        <div class="brand">
+          <img src="./images/tradersLogo.png" alt="Logo" />
+          <span><a href="#">TRADERS@BPHC</a></span>
+        </div>
+     
+        <div class="center-links">
+            <a href="../homepage/index.html">HOME</a>
+            <a href="../Traders-Events/events.html">EVENTS</a>
+            <a href="../Gallery/gallery.html">GALLERY</a>
+            <a href="../Yearbook/yearbook-timeline.html">YEARBOOK</a>
+            <a href="../Teams-final/team.html">TEAM</a>
+            <a href="../Articles/articles.html">ARTICLES</a>
+          </div>
+     
+        <div class="right-icons">
+          <button class="menu-btn" onclick="toggleMenu()">MENU</button>
+        </div>
+      </nav>
+     
+      <div id="menu">
+        <button class="close-btn" onclick="toggleMenu()">X</button>
+     
+        <div class="link-container">
+            <ul>
+              <li>
+                <a
+                  href="../homepage/index.html"
+                  onmouseover="changeMenuBg('#b319d6'); toggleMenuLinkStyles(this, true);"
+                  onmouseout="resetMenuBg(); toggleMenuLinkStyles(this, false);"
+                  >HOME</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../Traders-Events/events.html"
+                  onmouseover="changeMenuBg('#b319d6'); toggleMenuLinkStyles(this, true);"
+                  onmouseout="resetMenuBg(); toggleMenuLinkStyles(this, false);"
+                  >EVENTS</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../Gallery/gallery.html"
+                  onmouseover="changeMenuBg('#e41c74'); toggleMenuLinkStyles(this, true);"
+                  onmouseout="resetMenuBg(); toggleMenuLinkStyles(this, false);"
+                  >GALLERY</a
+                >
+              </li>
+              <li>
+                <a
+                  href="../Yearbook/yearbook-timeline.html"
+                  onmouseover="changeMenuBg('#048755'); toggleMenuLinkStyles(this, true);"
+                  onmouseout="resetMenuBg(); toggleMenuLinkStyles(this, false);"
+                  >YEARBOOK
+                </a>
+              </li>
+              <li>
+                <a
+                  href="../Teams-final/team.html"
+                  onmouseover="changeMenuBg('#048755'); toggleMenuLinkStyles(this, true);"
+                  onmouseout="resetMenuBg(); toggleMenuLinkStyles(this, false);"
+                  >TEAM
+                </a>
+              </li>
+              <li>
+                <a
+                  href="../Articles/articles.html"
+                  onmouseover="changeMenuBg('#e41c74'); toggleMenuLinkStyles(this, true);"
+                  onmouseout="resetMenuBg(); toggleMenuLinkStyles(this, false);"
+                  >ARTICLES</a
+                >
+              </li>
+            </ul>
+          </div>
+     
+        <div class="image-container">
+          <img
+            id="menu-image"
+            src="img_1.png"
+            alt="Menu Image"
+            class="image-visible"
+          />
+        </div>
+     
+        <div class="footer">
+          <div class="footer-columns">
+            <div>
+              <a href="#about">ABOUT US</a><br />
+              <a href="#footrr">CONTACT US</a>
+            </div>
+            <div>
+              <a href="https://www.facebook.com/groups/traders.bphc/">FACEBOOK</a
+              ><br />
+              <a href="https://www.instagram.com/traders_bphc/">INSTAGRAM</a
+              ><br />
+              <a
+                href="https://www.linkedin.com/company/tradersatbphc/posts/?feedView=all"
+                >LINKEDIN</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        function toggleMenu() {
+          var menu = document.getElementById("menu");
+          var navbar = document.getElementById("navbar");
+          if (menu.style.right === "0px") {
+            menu.style.right = "-100%";
+            navbar.style.transform = "translateY(0)";
+          } else {
+            menu.style.right = "0";
+            navbar.style.transform = "translateY(-100%)";
+          }
+        }
+     
+        function changeImage(imageSrc) {
+          const image = document.getElementById("menu-image");
+          image.src = imageSrc;
+        }
+     
+        function changeMenuBg(color) {
+          document.getElementById("menu").style.backgroundColor = color;
+        }
+     
+        function resetMenuBg() {
+          document.getElementById("menu").style.backgroundColor = "#000000";
+        }
+     
+        function toggleMenuLinkStyles(link, isHovered) {
+          const links = document.querySelectorAll(".link-container a");
+          links.forEach((l) => {
+            if (l !== link) {
+              l.classList.toggle("greyed-out", isHovered);
+            }
+          });
+          link.style.color = isHovered ? "black" : "";
+        }
+     
+        const body = document.body,
+          scrollWrap = document.getElementsByClassName(
+            "smooth-scroll-wrapper"
+          )[0],
+          height = scrollWrap.getBoundingClientRect().height - 1,
+          speed = 0.1;
+     
+        var offset = 0;
+     
+        body.style.height = Math.floor(height) + "px";
+     
+        function smoothScroll() {
+          offset += (window.pageYOffset - offset) * speed;
+     
+          var scroll = "translateY(-" + offset + "px) translateZ(0)";
+          scrollWrap.style.transform = scroll;
+     
+          callScroll = requestAnimationFrame(smoothScroll);
+        }
+     
+        smoothScroll();
+        function toggleMenu() {
+          var menu = document.getElementById("menu");
+          var navbar = document.getElementById("navbar");
+          var isOpen = menu.style.right === "0%";
+          menu.style.right = isOpen ? "-100%" : "0%";
+          navbar.style.transform = isOpen ? "translateX(0)" : "translateX(-100%)";
+        }
+      </script>
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+        integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+      ></script>
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+        integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+      ></script>
+      <script src="
+    https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js
+    "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+     
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+    <img src="./images/bg_bull_bear.svg" class="bull-bear" alt="Bull and Bear">
+    <div class="title">
+        <h1 class="heading">Yearbook</h1>
+    </div>
+    <div class="timeline">
+        <div class="outer">
+            <!-- Timeline cards will be generated by JavaScript -->
+        </div>
+    </div>
+    <footer>
+      <div class="footer_container">
+          <div class ="sizer">
+          <div class="socials">
+              <h3> Let's stay connected through our socials</h3>
+              <div class="icons">
+                  <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                  <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                  <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+              </div>
+          </div>   
+         
+             <div class = "contact">
+             <h3 style="color: #39f114;">Contact Us</h3>
+             <ul>
+              <li>Email: <a href="mailto:xyz@gmail.com" style="color: #FBFCF8;">xyz@gmail.com</a></li><br>
+              <li>Phone: <a href="tel:+91954954959" style="color: #FBFCF8">+91 954954959</a></li><br>
+              <li>Phone: <a href="tel:+919519549595" style="color: #FBFCF8">+91 9519549595</a></li><br>
+          </ul>
+          
+              </div>
+          </div>
+      </div>
+  </footer>
+  <script src="script.js"></script>
+  <script src="https://kit.fontawesome.com/78ff11a15c.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

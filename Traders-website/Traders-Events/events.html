@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Events</title>
+    <link rel="stylesheet" href="events-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav id="navbar">
+        <div class="brand">
+          <img src="./images/tradersLogo.png" alt="Logo" />
+          <span><a href="#">TRADERS@BPHC</a></span>
+        </div>
+     
+        <div class="center-links">
+          <a href="../homepage/index.html">HOME</a>
+          <a href="../Traders-Events/events.html">EVENTS</a>
+          <a href="../Gallery/gallery.html">GALLERY</a>
+          <a href="../Yearbook/yearbook-timeline.html">YEARBOOK</a>
+          <a href="../Teams-final/team.html">TEAM</a>
+          <a href="../Articles/articles.html">ARTICLES</a>
+        </div>
+     
+        <div class="right-icons">
+          <button class="menu-btn" onclick="toggleMenu()">MENU</button>
+        </div>
+      </nav>
+     
+      <div id="menu">
+        <button class="close-btn" onclick="toggleMenu()">X</button>
+     
+        <div class="link-container">
+          <ul>
+            <li>
+              <a
+                href="../homepage/index.html"
+                onmouseover="changeMenuBg('#b319d6'); toggleMenuLinkStyles(this, true);"
+                onmouseout="resetMenuBg(); toggleMenuLinkStyles(this, false);"
+                >HOME</a
+              >
+            </li>
+            <li>
+              <a
+                href="../Traders-Events/events.html"
+                onmouseover="changeMenuBg('#b319d6'); toggleMenuLinkStyles(this, true);"
+                onmouseout="resetMenuBg(); toggleMenuLinkStyles(this, false);"
+                >EVENTS</a
+              >
+            </li>
+            <li>
+              <a
+                href="../Gallery/gallery.html"
+                onmouseover="changeMenuBg('#e41c74'); toggleMenuLinkStyles(this, true);"
+                onmouseout="resetMenuBg(); toggleMenuLinkStyles(this, false);"
+                >GALLERY</a
+              >
+            </li>
+            <li>
+              <a
+                href="../Yearbook/yearbook-timeline.html"
+                onmouseover="changeMenuBg('#048755'); toggleMenuLinkStyles(this, true);"
+                onmouseout="resetMenuBg(); toggleMenuLinkStyles(this, false);"
+                >YEARBOOK
+              </a>
+            </li>
+            <li>
+              <a
+                href="../Teams-final/team.html"
+                onmouseover="changeMenuBg('#048755'); toggleMenuLinkStyles(this, true);"
+                onmouseout="resetMenuBg(); toggleMenuLinkStyles(this, false);"
+                >TEAM
+              </a>
+            </li>
+            <li>
+              <a
+                href="../Articles/articles.html"
+                onmouseover="changeMenuBg('#e41c74'); toggleMenuLinkStyles(this, true);"
+                onmouseout="resetMenuBg(); toggleMenuLinkStyles(this, false);"
+                >ARTICLES</a
+              >
+            </li>
+          </ul>
+        </div>
+     
+        <div class="image-container">
+          <img
+            id="menu-image"
+            src="img_1.png"
+            alt="Menu Image"
+            class="image-visible"
+          />
+        </div>
+     
+        <div class="footer">
+          <div class="footer-columns">
+            <div>
+              <a href="#about">ABOUT US</a><br />
+              <a href="#footrr">CONTACT US</a>
+            </div>
+            <div>
+              <a href="https://www.facebook.com/groups/traders.bphc/">FACEBOOK</a
+              ><br />
+              <a href="https://www.instagram.com/traders_bphc/">INSTAGRAM</a
+              ><br />
+              <a
+                href="https://www.linkedin.com/company/tradersatbphc/posts/?feedView=all"
+                >LINKEDIN</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        function toggleMenu() {
+          var menu = document.getElementById("menu");
+          var navbar = document.getElementById("navbar");
+          if (menu.style.right === "0px") {
+            menu.style.right = "-100%";
+            navbar.style.transform = "translateY(0)";
+          } else {
+            menu.style.right = "0";
+            navbar.style.transform = "translateY(-100%)";
+          }
+        }
+     
+        function changeImage(imageSrc) {
+          const image = document.getElementById("menu-image");
+          image.src = imageSrc;
+        }
+     
+        function changeMenuBg(color) {
+          document.getElementById("menu").style.backgroundColor = color;
+        }
+     
+        function resetMenuBg() {
+          document.getElementById("menu").style.backgroundColor = "#000000";
+        }
+     
+        function toggleMenuLinkStyles(link, isHovered) {
+          const links = document.querySelectorAll(".link-container a");
+          links.forEach((l) => {
+            if (l !== link) {
+              l.classList.toggle("greyed-out", isHovered);
+            }
+          });
+          link.style.color = isHovered ? "black" : "";
+        }
+     
+        const body = document.body,
+          scrollWrap = document.getElementsByClassName(
+            "smooth-scroll-wrapper"
+          )[0],
+          height = scrollWrap.getBoundingClientRect().height - 1,
+          speed = 0.1;
+     
+        var offset = 0;
+     
+        body.style.height = Math.floor(height) + "px";
+     
+        function smoothScroll() {
+          offset += (window.pageYOffset - offset) * speed;
+     
+          var scroll = "translateY(-" + offset + "px) translateZ(0)";
+          scrollWrap.style.transform = scroll;
+     
+          callScroll = requestAnimationFrame(smoothScroll);
+        }
+     
+        smoothScroll();
+        function toggleMenu() {
+          var menu = document.getElementById("menu");
+          var navbar = document.getElementById("navbar");
+          var isOpen = menu.style.right === "0%";
+          menu.style.right = isOpen ? "-100%" : "0%";
+          navbar.style.transform = isOpen ? "translateX(0)" : "translateX(-100%)";
+        }
+      </script>
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+        integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+      ></script>
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+        integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+      ></script>
+      <script src="
+    https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js
+    "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+     
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+
+
+    <img src="./images/bg_bull_bear.svg" class="bull-bear" alt="Bull and Bear">
+    <div class="title">
+        <h1 class="heading">Events</h1>
+    </div>
+
+    <section class="carousel-container">
+        <div class="custom-carousel" id="carousel">
+            <div class="item" style="background-image: url('https://i.pinimg.com/474x/f7/55/2a/f7552a146c91509f110cdb102df31154.jpg');">
+                <div class="item-desc">
+                    <h3 class="event-heading">Event 1</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                </div>
+            </div>
+            <div class="item" style="background-image: url('./images/pit-trading.png');">
+                <div class="item-desc">
+                    <h3 class="event-heading">Pit Trading</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                </div>
+            </div>
+            <div class="item" style="background-image: url('https://i.pinimg.com/474x/58/15/c2/5815c241200320fbb5cac2c5f546b6d7.jpg');">
+                <div class="item-desc">
+                    <h3 class="event-heading">Event 3</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const carousel = document.getElementById('carousel');
+            const items = document.querySelectorAll('.item');
+    
+            items.forEach(item => {
+                item.addEventListener('click', () => {
+                    items.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('expanded')) {
+                            otherItem.classList.remove('expanded');
+                        }
+                    });
+    
+                    item.classList.toggle('expanded');
+                });
+            });
+    </script>
+
+<<footer class="footers">
+  <div class="footers-container">
+      <div class="column">
+          <img src="./images/tradersLogo.png" alt="Logo" class="logos">
+      </div>
+      <div class="column">
+        E-mail:  
+        <a href="mailto:newbusiness@weareimpero.com">traders@hyderabad.bits-pilani.ac.in</a>
+          <br>
+          <p>+91 6204468828</p>
+          <br>
+          <p>BITS Pilani Hyderabad Campus, Secunderabad, Telangana 500078</p>
+        
+      </div>
+      <div class="column">
+        <div class="linking">
+          <div class="squaree"></div><a href="../homepage/index.html/#about">ABOUT US</a></div>
+          <div class="linking">
+          <div class="squaree"></div><a href="#">CONTACT US</a></div>
+          <div class="linking">
+          <div class="squaree"></div><a href="../Yearbook/yearbook-timeline.html">YEARBOOK</a></div>
+
+
+      </div>
+      <div class="column">
+          <h3>FOLLOW US</h3>
+          <div class="socials">
+            <div class="linking">
+              <div class="squaree"></div>
+              <a href="https://www.facebook.com/groups/traders.bphc/">Facebook</a> </div><!-- Facebook -->
+              <div class="linking"><div class="squaree"></div><a href="https://www.instagram.com/traders_bphc/">Instagram</a></div> <!-- Instagram -->
+             <div class="linking"> <div class="squaree"></div><a href="https://www.linkedin.com/company/tradersatbphc/posts/?feedView=all">LinkedIn</a> <!-- Twitter --></div>
+          </div>
+      </div>
+      
+  </div>
+  <div class="column" id="copy">
+    <h3>| All Rights Reserved © 2025 Traders@BPHC | </h3>
+  </div>
+</footer>
+    <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/78ff11a15c.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

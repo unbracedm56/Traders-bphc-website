@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Featured Articles | Traders@BPHC</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Bruno+Ace&display=swap" rel="stylesheet">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+        @import url("https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+        /* Base Styles */
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    }
+
+        body {
+            background-color: #061117;
+            color: #fcfbf8;
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Neon Pulse Animation */
+        @keyframes neonPulse {
+            0%, 100% { text-shadow: 0 0 10px #39ff14; }
+            50% { text-shadow: 0 0 20px #39ff14; }
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1400px;
+            margin: 100px auto 2rem;
+            padding: 0 2rem;
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem 0;
+        }
+
+        .page-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #39ff14, transparent);
+        }
+
+        .page-title {
+            font-family: 'Bruno Ace', sans-serif;
+            color: #39ff14;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Article Grid */
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        /* Article Card */
+        .article-card {
+            background: #061117;
+            border: 3px solid #39ff14;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+        }
+
+        .article-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(57, 255, 20, 0.15);
+        }
+
+        .article-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-bottom: 3px solid #39ff14;
+            filter: grayscale(30%);
+            transition: filter 0.3s ease;
+        }
+
+        @media (min-width: 768px) {
+            .article-image {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 911px) {
+            .article-image {
+                height: 350px;
+            }
+        }
+
+        .article-card:hover .article-image {
+            filter: grayscale(0%);
+        }
+
+        .article-content {
+            padding: 2rem;
+            position: relative;
+        }
+
+        .article-category {
+            display: inline-block;
+            background-color: #39ff14;
+            color: #061117;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Bruno Ace', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .article-title {
+            font-family: 'Bruno Ace', sans-serif;
+            color: #39ff14;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .article-excerpt {
+            color: #fcfbf8cc;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.95rem;
+            color: #fcfbf880;
+            border-top: 1px solid #39ff1433;
+            padding-top: 1.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-container {
+                margin-top: 80px;
+                padding: 0 1rem;
+            }
+
+            .page-title {
+                font-size: 2.2rem;
+            }
+
+            .articles-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .article-image {
+                height: 250px;
+            }
+        }
+
+        nav {
+    position: fixed; /* Changed from sticky */
+    top: 0;
+    left: 0;
+    width: 100%; /* Changed from 1440px */
+    z-index: 1000; /* Increased z-index for better layering */
+    /* Keep existing properties */
+    font-family: "Climate Crisis", serif;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background-color: #061117;
+    color: white;
+    border-bottom: 2px solid rgba(75, 195, 219, 0.3);
+}
+
+
+.brand {
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+   
+.brand img {
+    width: 40px;
+    height: 40px;
+}
+
+.brand a{
+    color: #ffffff;
+    text-decoration: none;
+}
+   
+.center-links {
+    display: flex;
+    gap: 30px;
+    text-transform: uppercase;
+}
+   
+.center-links a {
+    font-size: 1em;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 6px 10px;
+    transition: color 0.3s;
+}
+   
+.center-links a:hover {
+    color: #4bc3db;
+}
+   
+.right-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+   
+.right-icons button {
+    background: none;
+    border: none;
+    font-size: 1em;
+    color: black;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+   
+.right-icons .menu-btn {
+    font-family: "Climate Crisis", serif;
+    letter-spacing: 1px;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 8px 15px;
+}
+   
+#menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100%;
+    background-color: rgba(34, 34, 34, 0.91);
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+   
+    padding: 20px;
+    gap: 20px;
+    transition: right 0.5s ease;
+    z-index: 3;
+}
+   
+.link-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+   
+#menu a {
+    font-weight: 900;
+    font-size: 3em;
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+   
+#menu a:hover {
+    color: black;
+}
+   
+.greyed-out {
+    color: rgba(255, 255, 255, 0.34) !important;
+}
+   
+.close-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 1em;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    z-index: 5000;
+}
+   
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+    transition: 0.5s ease-in;
+}
+   
+.image-container img {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+   
+    opacity: 1;
+    transition: 0.5s ease;
+}
+
+@media (max-width: 768px) {
+    nav {
+        padding: 15px 20px;
+        width: 100%;
+        .center-links { display: none } /* Intentional mobile behavior */
+        .menu-btn { display: block } /* Ensure this is visible */
+    }
+}
+
+
+@media (min-width: 912px) {
+  .right-icons button{
+    display: none;
+  }
+}
+@media (max-width: 1024px) {
+  .brand span{
+    display: none;
+  }
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgba(0, 0, 0, 0);
+   
+    position: relative; /* Positioned for mobile view */
+    z-index: 10; /* Above other elements */
+}
+   
+.footer-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 20px;
+    font-size: 0.25em;
+}
+   
+.footer a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 0.5em;
+}
+.footer a:hover {
+    background-color: #ed1062;
+}
+   
+@media (max-width: 768px) {
+    .center-links {
+      display: none;
+    }
+   
+    .menu-btn {
+      display: block;
+      font-size: 15px;
+    }
+   
+    .image-container {
+      display: none;
+    }
+    .footer {
+      justify-content: center;
+      align-content: center;
+      right: 0; /* Align to the right */
+      width: 60%; /* Adjust width for mobile */
+      height: 100%; /* Full height */
+    }
+   
+    .footer-columns {
+      display: flex; /* Stack columns vertically */
+      flex-direction: column; /* Stack in a single column */
+      justify-content: center;
+      align-content: center;
+    }
+}
+@media (max-width: 435px) {
+    #menu {
+      width: 100%;
+    }
+    #menu a {
+      font-size: 1.5em;
+    }
+}
+
+.site-footer {
+    background-color: #061117;
+    color: #fcfbf8;
+    padding: 4rem 0 2rem;
+    margin: 0;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    border-top: 2px solid #39ff14;
+    overflow-x: hidden;
+}
+
+/* Add this to prevent horizontal scroll */
+html, body {
+    overflow-x: hidden;
+}
+
+.footers {
+  color: white;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  justify-content: center;
+}
+.border-box {
+  padding: 0;
+  width: 100%;
+  font-weight: 100;
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+  border: 1px white solid;
+  height: 200px;
+  border-style: dashed;
+}
+.border-box .logo img {
+  width: 80px;
+  height: 80px;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.socials {
+  display: flex;
+  gap:10px;
+  flex-direction: column;
+}
+
+.footers {
+  background: #000000;
+  color: rgb(255, 255, 255);
+  padding: 50px 20px;
+}
+
+.footers-container {
+  padding: 6px;
+  border-top: rgb(255, 255, 255) 1px solid;
+  width: 100%;
+  background: #000000;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footers .column {
+  flex: 1;
+  min-width: 250px;
+  margin: 10px;
+}
+
+.footers .column h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.footers .column a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  display: block;
+  margin-top: 5px;
+  font-size: 1rem;
+}
+
+.footers .column a:hover {
+  text-decoration: underline;
+}
+
+.socials {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.socials a {
+  font-size: 1.5rem;
+  color: rgb(0, 0, 0);
+}
+
+.logos {
+  width: 150px;
+  margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+  .contact-section h1 {
+      font-size: 3rem;
+  }
+  .footer-container {
+      flex-direction: column;
+      text-align: center;
+  }
+}
+.linking{
+  display: flex;
+  align-items: center;
+}
+#copy{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  border-top: solid 1px rgb(255, 255, 255);
+  border-bottom: solid 1px white;
+
+  padding: 6px;
+}
+#copy h3{
+  font-size: small;
+}
+
+.article-link {
+    color: #39ff14;
+    text-decoration: underline;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+</style>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="brand">
+          <img src="./images/tradersLogo.png" alt="Logo" />
+          <span><a href="#">TRADERS@BPHC</a></span>
+        </div>
+     
+        <div class="center-links">
+          <a href="../homepage/index.html">HOME</a>
+          <a href="../Traders-Events/events.html">EVENTS</a>
+          <a href="../Gallery/gallery.html">GALLERY</a>
+          <a href="../Yearbook/yearbook-timeline.html">YEARBOOK</a>
+          <a href="../Teams-final/team.html">TEAM</a>
+          <a href="../Articles/articles.html">ARTICLES</a>
+        </div>
+     
+        <div class="right-icons">
+          <button class="menu-btn" onclick="toggleMenu()">MENU</button>
+        </div>
+      </nav>
+     
+      <div id="menu">
+        <button class="close-btn" onclick="toggleMenu()">X</button>
+     
+        <div class="link-container">
+          <ul>
+            <li>
+              <a
+                href="../homepage/index.html"
+                onmouseover="changeMenuBg('#b319d6'); toggleMenuLinkStyles(this, true);"
+                onmouseout="resetMenuBg(); toggleMenuLinkStyles(this, false);"
+                >HOME</a
+              >
+            </li>
+            <li>
+              <a
+                href="../Traders-Events/events.html"
+                onmouseover="changeMenuBg('#b319d6'); toggleMenuLinkStyles(this, true);"
+                onmouseout="resetMenuBg(); toggleMenuLinkStyles(this, false);"
+                >EVENTS</a
+              >
+            </li>
+            <li>
+              <a
+                href="../Gallery/gallery.html"
+                onmouseover="changeMenuBg('#e41c74'); toggleMenuLinkStyles(this, true);"
+                onmouseout="resetMenuBg(); toggleMenuLinkStyles(this, false);"
+                >GALLERY</a
+              >
+            </li>
+            <li>
+              <a
+                href="../Yearbook/yearbook-timeline.html"
+                onmouseover="changeMenuBg('#048755'); toggleMenuLinkStyles(this, true);"
+                onmouseout="resetMenuBg(); toggleMenuLinkStyles(this, false);"
+                >YEARBOOK
+              </a>
+            </li>
+            <li>
+              <a
+                href="../Teams-final/team.html"
+                onmouseover="changeMenuBg('#048755'); toggleMenuLinkStyles(this, true);"
+                onmouseout="resetMenuBg(); toggleMenuLinkStyles(this, false);"
+                >TEAM
+              </a>
+            </li>
+            <li>
+              <a
+                href="../Articles/articles.html"
+                onmouseover="changeMenuBg('#e41c74'); toggleMenuLinkStyles(this, true);"
+                onmouseout="resetMenuBg(); toggleMenuLinkStyles(this, false);"
+                >ARTICLES</a
+              >
+            </li>
+          </ul>
+        </div>
+     
+        <div class="image-container">
+          <img
+            id="menu-image"
+            src="img_1.png"
+            alt="Menu Image"
+            class="image-visible"
+          />
+        </div>
+     
+        <div class="footer">
+          <div class="footer-columns">
+            <div>
+              <a href="#about">ABOUT US</a><br />
+              <a href="#footrr">CONTACT US</a>
+            </div>
+            <div>
+              <a href="https://www.facebook.com/groups/traders.bphc/">FACEBOOK</a
+              ><br />
+              <a href="https://www.instagram.com/traders_bphc/">INSTAGRAM</a
+              ><br />
+              <a
+                href="https://www.linkedin.com/company/tradersatbphc/posts/?feedView=all"
+                >LINKEDIN</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>
+        function toggleMenu() {
+          var menu = document.getElementById("menu");
+          var navbar = document.getElementById("navbar");
+          if (menu.style.right === "0px") {
+            menu.style.right = "-100%";
+            navbar.style.transform = "translateY(0)";
+          } else {
+            menu.style.right = "0";
+            navbar.style.transform = "translateY(-100%)";
+          }
+        }
+     
+        function changeImage(imageSrc) {
+          const image = document.getElementById("menu-image");
+          image.src = imageSrc;
+        }
+     
+        function changeMenuBg(color) {
+          document.getElementById("menu").style.backgroundColor = color;
+        }
+     
+        function resetMenuBg() {
+          document.getElementById("menu").style.backgroundColor = "#000000";
+        }
+     
+        function toggleMenuLinkStyles(link, isHovered) {
+          const links = document.querySelectorAll(".link-container a");
+          links.forEach((l) => {
+            if (l !== link) {
+              l.classList.toggle("greyed-out", isHovered);
+            }
+          });
+          link.style.color = isHovered ? "black" : "";
+        }
+     
+        const body = document.body,
+          scrollWrap = document.getElementsByClassName(
+            "smooth-scroll-wrapper"
+          )[0],
+          height = scrollWrap.getBoundingClientRect().height - 1,
+          speed = 0.1;
+     
+        var offset = 0;
+     
+        body.style.height = Math.floor(height) + "px";
+     
+        function smoothScroll() {
+          offset += (window.pageYOffset - offset) * speed;
+     
+          var scroll = "translateY(-" + offset + "px) translateZ(0)";
+          scrollWrap.style.transform = scroll;
+     
+          callScroll = requestAnimationFrame(smoothScroll);
+        }
+     
+        smoothScroll();
+        function toggleMenu() {
+          var menu = document.getElementById("menu");
+          var navbar = document.getElementById("navbar");
+          var isOpen = menu.style.right === "0%";
+          menu.style.right = isOpen ? "-100%" : "0%";
+          navbar.style.transform = isOpen ? "translateX(0)" : "translateX(-100%)";
+        }
+      </script>
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+        integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+      ></script>
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+        integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+      ></script>
+      <script src="
+    https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js
+    "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+     
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <header class="page-header">
+            <h1 class="page-title">Featured Insights</h1>
+            <p class="page-subtitle">Deep dives into market strategies and innovations</p>
+        </header>
+
+        <div class="articles-grid">
+            <!-- Article 1 -->
+            <article class="article-card">
+                <img src="./images/article1.jpg" 
+                     alt="Crypto Market Analysis" 
+                     class="article-image">
+                <div class="article-content">
+                    <span class="article-category">Politics and Economics</span>
+                    <h2 class="article-title">Indian Economy and Trump Effect</h2>
+                    <p class="article-excerpt">
+                        As we enter 2025, India’s economy shows steady growth, driven by key sectors like tech and manufacturing, despite challenges like inflation and global uncertainties. Meanwhile, former President Trump’s influence continues to affect global trade dynamics, including US-India relations, which could shape India's economic trajectory. Traders must stay alert to these shifting dynamics to navigate the year ahead successfully.
+                    </p>
+                    <a href="https://www.linkedin.com/posts/tradersatbphc_indiaeconomy2025-trumpeffect-tradersperspective-activity-7290432849113960448-m6q-?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFIt1e8B5Ky79PgVTWBync_dNM_-OXLfsUg" class="article-link">Read More</a>
+                    <div class="article-meta">
+                    </div>
+                </div>
+            </article>
+
+            <!-- Article 2 -->
+            <article class="article-card">
+                <img src="./images/article_2.jpg" 
+                     alt="AI Trading Strategies" 
+                     class="article-image">
+                <div class="article-content">
+                    <span class="article-category">Tech Innovation</span>
+                    <h2 class="article-title">AI-Powered Trading: The New Frontier</h2>
+                    <p class="article-excerpt">
+                        Discover how machine learning algorithms are revolutionizing portfolio management 
+                        and predictive analytics in modern financial markets.
+                    </p>
+                    <a href="https://www.linkedin.com/posts/tradersatbphc_sme-ipo-investmentrisks-activity-7243922799973609472-EI7w?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFIt1e8B5Ky79PgVTWBync_dNM_-OXLfsUg" class="article-link">Read More</a>
+                    <div class="article-meta">
+                    </div>
+                </div>
+            </article>
+            <!-- Article 3 -->
+            <article class="article-card">
+                <img src="./images/article-3.jpg"
+                     alt="AI Trading Strategies" 
+                     class="article-image">
+                <div class="article-content">
+                    <span class="article-category">Politics and The Trade Market</span>
+                    <h2 class="article-title">Impact of US Elections on the Market</h2>
+                    <p class="article-excerpt">
+                        This report dives into how election cycles influence market volatility, key sectors like technology, finance, and energy, as well as the future of cryptocurrency.
+and get insights on investor strategies during uncertain times! 
+                    </p>
+                    <a href="https://www.linkedin.com/posts/tradersatbphc_sme-ipo-investmentrisks-activity-7243922799973609472-EI7w?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFIt1e8B5Ky79PgVTWBync_dNM_-OXLfsUg" class="article-link">Read More</a>
+                    <div class="article-meta">
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footers">
+        <div class="footers-container">
+            <div class="column">
+                <img src="./images/tradersLogo.png" alt="Logo" class="logos">
+            </div>
+            <div class="column">
+              E-mail:  
+              <a href="mailto:newbusiness@weareimpero.com">traders@hyderabad.bits-pilani.ac.in</a>
+                <br>
+                <p>+91 6204468828</p>
+                <br>
+                <p>BITS Pilani Hyderabad Campus, Secunderabad, Telangana 500078</p>
+              
+            </div>
+            <div class="column">
+              <div class="linking">
+                <div class="squaree"></div><a href="#">ABOUT US</a></div>
+                <div class="linking">
+                <div class="squaree"></div><a href="#">CONTACT US</a></div>
+                <div class="linking">
+                <div class="squaree"></div><a href="#">YEARBOOK</a></div>
+
+
+            </div>
+            <div class="column">
+                <h3>FOLLOW US</h3>
+                <div class="socials">
+                  <div class="linking">
+                    <div class="squaree"></div>
+                    <a href="https://www.facebook.com/groups/traders.bphc/">Facebook</a> </div><!-- Facebook -->
+                    <div class="linking"><div class="squaree"></div><a href="https://www.instagram.com/traders_bphc/">Instagram</a></div> <!-- Instagram -->
+                   <div class="linking"> <div class="squaree"></div><a href="https://www.linkedin.com/company/tradersatbphc/posts/?feedView=all">LinkedIn</a> <!-- Twitter --></div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="column" id="copy">
+          <h3>| All Rights Reserved © 2025 Traders@BPHC | </h3>
+        </div>
+    </footer>
+    <script src="main.js"></script>
+    <script src="https://kit.fontawesome.com/78ff11a15c.js" crossorigin="anonymous"></script>
+
+    <script>
+        // Add smooth scroll behavior
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add hover effect delay for cards
+        document.querySelectorAll('.article-card').forEach(card => {
+            let timeout;
+            card.addEventListener('mouseenter', () => {
+                timeout = setTimeout(() => card.classList.add('hover'), 50);
+            });
+            card.addEventListener('mouseleave', () => {
+                clearTimeout(timeout);
+                card.classList.remove('hover');
+            });
+        });
+    </script>
+</body>
+</html>
