@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEAM | TRADERS@BPHC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./CSS/team-style.css">
+</head>
+<body>
+    <div class="container">
+        <nav id="navbar">
+            <div class="brand">
+              <img src="./images/tradersLogo.png" alt="Logo" />
+              <span><a href="#">TRADERS@BPHC</a></span>
+            </div>
+         
+            <div class="center-links">
+              <a href="./index.html">HOME</a>
+              <a href="./events.html">EVENTS</a>
+              <a href="./gallery.html">GALLERY</a>
+              <a href="./yearbook-timeline.html">YEARBOOK</a>
+              <a href="./team.html">TEAM</a>
+              <a href="./articles.html">ARTICLES</a>
+            </div>
+      
+            <div class="right-icons">
+              <button class="menu-btn" onclick="toggleMenu()">MENU</button>
+            </div>
+          </nav>
+      
+          <div id="menu">
+            <button class="close-btn" onclick="toggleMenu()">X</button>
+      
+            <div class="link-container">
+              <ul>
+                <li>
+                  <a
+                    href="./index.html"
+                    onmouseover="changeMenuBg('#b319d6'); toggleMenuLinkStyles(this, true);"
+                    onmouseout="resetMenuBg(); toggleMenuLinkStyles(this, false);"
+                    >HOME</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="./events.html"
+                    onmouseover="changeMenuBg('#b319d6'); toggleMenuLinkStyles(this, true);"
+                    onmouseout="resetMenuBg(); toggleMenuLinkStyles(this, false);"
+                    >EVENTS</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="./gallery.html"
+                    onmouseover="changeMenuBg('#e41c74'); toggleMenuLinkStyles(this, true);"
+                    onmouseout="resetMenuBg(); toggleMenuLinkStyles(this, false);"
+                    >GALLERY</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="./yearbook-timeline.html"
+                    onmouseover="changeMenuBg('#048755'); toggleMenuLinkStyles(this, true);"
+                    onmouseout="resetMenuBg(); toggleMenuLinkStyles(this, false);"
+                    >YEARBOOK
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="./team.html"
+                    onmouseover="changeMenuBg('#048755'); toggleMenuLinkStyles(this, true);"
+                    onmouseout="resetMenuBg(); toggleMenuLinkStyles(this, false);"
+                    >TEAM
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="./articles.html"
+                    onmouseover="changeMenuBg('#e41c74'); toggleMenuLinkStyles(this, true);"
+                    onmouseout="resetMenuBg(); toggleMenuLinkStyles(this, false);"
+                    >ARTICLES</a
+                  >
+                </li>
+              </ul>
+            </div>
+         
+            <div class="image-container">
+              <img
+                id="menu-image"
+                src="img_1.png"
+                alt="Menu Image"
+                class="image-visible"
+              />
+            </div>
+         
+            <div class="footer">
+              <div class="footer-columns">
+                <div>
+                  <a href="#about">ABOUT US</a><br />
+                  <a href="#footrr">CONTACT US</a>
+                </div>
+                <div>
+                  <a href="https://www.facebook.com/groups/traders.bphc/">FACEBOOK</a
+                  ><br />
+                  <a href="https://www.instagram.com/traders_bphc/">INSTAGRAM</a
+                  ><br />
+                  <a
+                    href="https://www.linkedin.com/company/tradersatbphc/posts/?feedView=all"
+                    >LINKEDIN</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <script>
+            function toggleMenu() {
+              var menu = document.getElementById("menu");
+              var navbar = document.getElementById("navbar");
+              if (menu.style.right === "0px") {
+                menu.style.right = "-100%";
+                navbar.style.transform = "translateY(0)";
+              } else {
+                menu.style.right = "0";
+                navbar.style.transform = "translateY(-100%)";
+              }
+            }
+         
+            function changeImage(imageSrc) {
+              const image = document.getElementById("menu-image");
+              image.src = imageSrc;
+            }
+         
+            function changeMenuBg(color) {
+              document.getElementById("menu").style.backgroundColor = color;
+            }
+         
+            function resetMenuBg() {
+              document.getElementById("menu").style.backgroundColor = "#000000";
+            }
+         
+            function toggleMenuLinkStyles(link, isHovered) {
+              const links = document.querySelectorAll(".link-container a");
+              links.forEach((l) => {
+                if (l !== link) {
+                  l.classList.toggle("greyed-out", isHovered);
+                }
+              });
+              link.style.color = isHovered ? "black" : "";
+            }
+         
+            const body = document.body,
+              scrollWrap = document.getElementsByClassName(
+                "smooth-scroll-wrapper"
+              )[0],
+              height = scrollWrap.getBoundingClientRect().height - 1,
+              speed = 0.1;
+         
+            var offset = 0;
+         
+            body.style.height = Math.floor(height) + "px";
+         
+            function smoothScroll() {
+              offset += (window.pageYOffset - offset) * speed;
+         
+              var scroll = "translateY(-" + offset + "px) translateZ(0)";
+              scrollWrap.style.transform = scroll;
+         
+              callScroll = requestAnimationFrame(smoothScroll);
+            }
+         
+            smoothScroll();
+            function toggleMenu() {
+              var menu = document.getElementById("menu");
+              var navbar = document.getElementById("navbar");
+              var isOpen = menu.style.right === "0%";
+              menu.style.right = isOpen ? "-100%" : "0%";
+              navbar.style.transform = isOpen ? "translateX(0)" : "translateX(-100%)";
+            }
+          </script>
+          <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+            integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+          ></script>
+          <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+            integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+          ></script>
+          <script src="
+        https://cdn.jsdelivr.net/npm/split-type@0.3.4/umd/index.min.js
+        "></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+         
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
+
+        <div class="content-container">
+            <div class="content">
+                <header>
+                    <h1 class="heading">TEAM</h1>
+                </header>
+                <div class="data">
+                    <div class="content-card">
+                        <img src="./images/teams/PORs photos/tulshyan.jpg" alt="">
+                        <div class="info">
+                            <h3>Pranav Tulshyan</h3>
+                            <h4>President</h4>
+                            <div class="socials">
+                                <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                                <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+                                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-card">
+                        <img src="./images/teams/PORs photos/vp.jpg" alt="">
+                        <div class="info">
+                            <h3>Shravan Somani</h3>
+                            <h4>Vice President</h4>
+                            <div class="socials">
+                                <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                                <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+                                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-card">
+                        <img src="./images/teams/PORs photos/secy.jpg" alt="">
+                        <div class="info">
+                            <h3>Siddharth Sangai</h3>
+                            <h4>Secretary</h4>
+                            <div class="socials">
+                                <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                                <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+                                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-card">
+                        <img src="./images/teams/PORs photos/joint-secy.jpg" alt="">
+                        <div class="info">
+                            <h3>Tanuj Gupta</h3>
+                            <h4>Joint Secretary</h4>
+                            <div class="socials">
+                                <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                                <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+                                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-card">
+                        <img src="./images/teams/PORs photos/treasurer.jpg" alt="">
+                        <div class="info">
+                            <h3>Ayush Karpe</h3>
+                            <h4>Treasurer</h4>
+                            <div class="socials">
+                                <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                                <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+                                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-card">
+                        <img src="./images/teams/PORs photos/pfr.jpg" alt="">
+                        <div class="info">
+                            <h3>Prayag Rath</h3>
+                            <h4>Operations Head</h4>
+                            <div class="socials">
+                                <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                                <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+                                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-card">
+                        <img src="./images/teams/PORs photos/coordi.jpg" alt="">
+                        <div class="info">
+                            <h3>Upasana Agrawal</h3>
+                            <h4>Coordinator</h4>
+                            <div class="socials">
+                                <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                                <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+                                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-card">
+                        <img src="./images/teams/PORs photos/pfr.jpg" alt="">
+                        <div class="info">
+                            <h3>Umaang Khambhati</h3>
+                            <h4>Design Head</h4>
+                            <div class="socials">
+                                <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                                <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+                                <a href=""><i class="fa-brands fa-facebook"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+        <footer class="footers">
+        <div class="footers-container">
+            <div class="column">
+                <img src="./images/teams/tradersLogo.png" alt="Logo" class="logos">
+            </div>
+            <div class="column">
+              E-mail:  
+              <a href="mailto:traders@hyderabad.bits-pilani.ac.in">traders@hyderabad.bits-pilani.ac.in</a>
+                <br>
+                <p>+91 6204468828</p>
+                <br>
+                <p>BITS Pilani Hyderabad Campus, Secunderabad, Telangana 500078</p>
+              
+            </div>
+            <div class="column">
+              <div class="linking">
+                <div class="squaree"></div><a href="#">ABOUT US</a></div>
+                <div class="linking">
+                <div class="squaree"></div><a href="#">CONTACT US</a></div>
+                <div class="linking">
+                <div class="squaree"></div><a href="#">YEARBOOK</a></div>
+
+
+            </div>
+            <div class="column">
+                <h3>FOLLOW US</h3>
+                <div class="socials">
+                  <div class="linking">
+                    <div class="squaree"></div>
+                    <a href="https://www.facebook.com/groups/traders.bphc/">Facebook</a> </div><!-- Facebook -->
+                    <div class="linking"><div class="squaree"></div><a href="https://www.instagram.com/traders_bphc/">Instagram</a></div> <!-- Instagram -->
+                   <div class="linking"> <div class="squaree"></div><a href="https://www.linkedin.com/company/tradersatbphc/posts/?feedView=all">LinkedIn</a> <!-- Twitter --></div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="column" id="copy">
+          <h3>| All Rights Reserved © 2025 Traders@BPHC | </h3>
+        </div>
+    </footer>
+    <script src="https://kit.fontawesome.com/78ff11a15c.js" crossorigin="anonymous"></script>
+    <script src="./JS_Files/teams.js"></script>
+</body>
+</html>

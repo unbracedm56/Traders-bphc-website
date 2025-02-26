@@ -1,0 +1,483 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+    font-family: "Poppins", serif;
+    background-color: #061117;
+    color: #FBFCF8;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content-container{
+    width: 95%;
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0rem;
+}
+
+@media (min-width : 1250px) {
+    .content {
+        max-width: 1200px;
+        min-width: 1200px;
+    }
+}
+
+@media (min-width : 850px) and (max-width: 1200px){
+    .content {
+        max-width: 850px;
+        min-width: 850px;
+    }
+}
+
+@media (min-width: 535px) and (max-width: 850px) {
+    .content {
+        min-width: 535px;
+        max-width: 840px;
+    }
+}
+
+@media (max-width: 535px) {
+    .content {
+        min-width: 358px;
+        max-width: 535px;
+    }
+}
+
+header {
+    margin-top: 5.5rem;
+}
+
+header > h1 {
+    font-family: "Bruno Ace", serif;
+    color: #39FF14;
+    font-size: 4rem ;  
+    font-weight: bold;
+    margin: 0rem 0rem 0.5rem;
+    text-align: center;
+}
+
+@media (max-width : 535px) {
+    header > h1 {
+        font-size: 3.5rem;
+    }
+}
+
+.data {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.content-card {
+    width: 350px;
+    max-height: 350px;
+    border: 3px solid #FBFCF8;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 535px) {
+    .content-card {
+        width: 205px;
+    }
+}
+
+.content-card > img {
+    width: 100%;
+    display: block;
+    border-radius: 10px 10px 10px 10px; 
+
+}
+
+.info {
+    align-self: center;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #FBFCF8;
+    width: 80%; 
+    height: 30%;
+    bottom: 20px;
+    border-radius: 10px 10px 10px 10px;
+}
+
+h3, h4 {
+    margin: 0px;
+}
+
+h3 {
+    margin-top: 5px;
+    color: #0d1117;
+    font-size: 1.5rem;
+}
+
+h4 {
+    margin-top: -7px;
+    font-size: 1.3rem;
+    color: #0d1117;
+}
+
+@media (max-width: 535px) {
+    h3 {
+        font-size: 0.9rem;
+    }
+    h4 {
+        font-size: 0.75rem;
+    }
+}
+
+.socials a {
+    margin-top: -20px;
+    width: 100%;
+    color: #061115;
+    font-size: 1.5rem;
+}
+
+@media (max-width: 535px) {
+    .socials a {
+        font-size: 1rem;
+    }
+}
+
+.socials a:nth-child(1):hover {
+    color: #0077B5;
+}
+.socials a:nth-child(2):hover {
+    color: #25D366;
+}
+.socials a:nth-child(3):hover {
+    color: #3B5998;
+}
+
+
+.content-card:hover {
+    box-shadow: 0 0 0.6rem #FBFCF8;
+    transform: scale(1.04);
+    transition: 0.4s ease-in-out;
+}
+
+h2{
+    padding: 0, 1rem;
+    margin-left: 5%;
+}
+
+@media (max-width: 1054px) {
+    .article_1 {
+        flex-direction: column; 
+        align-items: center;
+        text-align: center;
+    }
+
+    .img_1 img {
+        width: 100%; 
+        max-width: 400px; 
+    }
+
+    .summary_1 {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+}
+ 
+ul {
+  list-style: none;
+}
+ 
+nav {
+  font-family: "Climate Crisis", serif;
+  letter-spacing: 1px;
+  width: 100%;
+  font-weight: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  background-color: #061117;
+  color: white;
+  transition: transform 0.5s ease;
+  z-index: 1000;
+  top: 0;
+  position: fixed;
+  border-bottom: 2px solid rgba(75, 195, 219, 0.3);
+}
+ 
+.brand {
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+ 
+.brand img {
+  width: 40px;
+  height: 40px;
+}
+ 
+.center-links {
+  display: flex;
+  gap: 40px;
+  text-transform: uppercase;
+}
+ 
+.center-links a {
+  font-size: 1em;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 6px 10px;
+  transition: color 0.3s;
+}
+ 
+.center-links a:hover {
+  color: #4bc3db;
+}
+ 
+.right-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+ 
+.right-icons button {
+  background: none;
+  border: none;
+  font-size: 1em;
+  color: black;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+ 
+.right-icons .menu-btn {
+  font-family: "Climate Crisis", serif;
+  letter-spacing: 1px;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 8px 15px;
+}
+ 
+#menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  height: 100%;
+  background-color: rgba(34, 34, 34, 0.91);
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+ 
+  padding: 20px;
+  gap: 20px;
+  transition: right 0.5s ease;
+  z-index: 3;
+}
+ 
+.link-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+ 
+#menu a {
+  font-weight: 900;
+  font-size: 3em;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+ 
+#menu a:hover {
+  color: black;
+}
+ 
+.greyed-out {
+  color: rgba(255, 255, 255, 0.34) !important;
+}
+ 
+.close-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 1em;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 5000;
+}
+ 
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  transition: 0.5s ease-in;
+}
+ 
+.image-container img {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+ 
+  opacity: 1;
+  transition: 0.5s ease;
+}
+
+@media (min-width: 1025px) {
+  .right-icons button{
+    display: none;
+  }
+}
+@media (max-width: 1024px) {
+  .brand span{
+    display: none;
+  }
+}
+ 
+footer {
+  color: white;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  justify-content: center;
+}
+
+.border-box {
+  padding: 0;
+  width: 100%;
+  font-weight: 100;
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+  border: 1px white solid;
+  height: 200px;
+  border-style: dashed;
+}
+.border-box .logo img {
+  width: 80px;
+  height: 80px;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.footer .socials {
+  display: flex;
+  gap:10px;
+  flex-direction: column;
+}
+
+.footers {
+  background: #000000;
+  color: rgb(255, 255, 255);
+  padding: 50px 20px;
+}
+
+.footers-container {
+  padding: 6px;
+  border-top: rgb(255, 255, 255) 1px solid;
+  width: 100%;
+  background: #000000;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footers .column {
+  flex: 1;
+  min-width: 250px;
+  margin: 10px;
+}
+
+.footers .column h3 {
+    color: #FBFCF8;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.footers .column a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  display: block;
+  margin-top: 5px;
+  font-size: 1rem;
+}
+
+.footers .column a:hover {
+  text-decoration: underline;
+}
+
+.socials {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.socials a {
+  font-size: 1.5rem;
+  color: rgb(0, 0, 0);
+}
+
+.logos {
+  width: 150px;
+  margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+  .contact-section h1 {
+      font-size: 3rem;
+  }
+  .footer-container {
+      flex-direction: column;
+      text-align: center;
+  }
+}
+.linking{
+  display: flex;
+  align-items: center;
+}
+#copy{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  border-top: solid 1px rgb(255, 255, 255);
+  border-bottom: solid 1px white;
+
+  padding: 6px;
+}
+#copy h3{
+  font-size: small;
+}
