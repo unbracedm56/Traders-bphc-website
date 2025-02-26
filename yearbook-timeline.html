@@ -1,18 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery | TRADERS@BPHC</title>
+    <link rel="stylesheet" href="./CSS/yearbook-styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./CSS/gallery-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>The Previous Traders Yearbook</title>
 </head>
+
 <body>
     <nav id="navbar">
         <div class="brand">
-          <img src="./images/gallery/tradersLogo.png" alt="Logo" />
+          <img src="./images/yearbook/tradersLogo.png" alt="Logo" />
           <span><a href="#">TRADERS@BPHC</a></span>
         </div>
      
@@ -197,141 +201,57 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
      
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
-    <div class="container">
-        <img id="background-image" src="./images/gallery/bg_bull_bear.svg" alt="">
-        <div class="content-container">
-            <div class="content">
-                <header>
-                    <h1>GALLERY</h1>
-                </header>
-                <div class="carousel-container">
-                    <div class="carousel-track">
-                        <!-- Slides will be injected here -->
-                    </div>
-                    
-                    <button class="carousel-nav prev" aria-label="Previous slide"></button>
-                    <button class="carousel-nav next" aria-label="Next slide"></button>
-                    <div class="carousel-indicators"></div>
-                </div>
-            
-                <script>
-                    const events = [
-                        {
-                            image: "https://i.pinimg.com/736x/80/f4/29/80f4297787ceb89111962a3d51363277.jpg"
-                        },
-                        {
-                            image: "https://i.pinimg.com/736x/43/7e/52/437e52c2df01856fd5ebc0ac3dd87aa7.jpg"
-                        },
-                        {
-                            image: "https://i.pinimg.com/736x/b6/88/31/b68831ed5d31b7f569560a8805ff06ec.jpg"
-                        },
-                        {
-                            image: "https://i.pinimg.com/736x/72/02/3f/72023f3ed0b2d9bcadca30fd1608e5a1.jpg"
-                        }
-                    ];
-            
-                    // Initialize carousel
-                    const track = document.querySelector('.carousel-track');
-                    const indicators = document.querySelector('.carousel-indicators');
-                    let currentIndex = 0;
-            
-                    // Create slides
-                    events.forEach((event, index) => {
-                        const slide = document.createElement('div');
-                        slide.className = 'carousel-slide';
-                        
-                        slide.innerHTML = `
-                            <img src="${event.image}" class="carousel-image" alt="${event.title}">
-                            <div class="carousel-caption">
-                            </div>
-                        `;
-                        
-                        track.appendChild(slide);
-            
-                        // Create indicators
-                        const indicator = document.createElement('div');
-                        indicator.className = `carousel-indicator ${index === 0 ? 'active' : ''}`;
-                        indicator.addEventListener('click', () => goToSlide(index));
-                        indicators.appendChild(indicator);
-                    });
-            
-                    // Navigation functions
-                    function updateCarousel() {
-                        track.style.transform = `translateX(-${currentIndex * 100}%)`;
-                        document.querySelectorAll('.carousel-indicator').forEach((indicator, i) => {
-                            indicator.classList.toggle('active', i === currentIndex);
-                        });
-                    }
-            
-                    function nextSlide() {
-                        currentIndex = (currentIndex + 1) % events.length;
-                        updateCarousel();
-                    }
-            
-                    function prevSlide() {
-                        currentIndex = (currentIndex - 1 + events.length) % events.length;
-                        updateCarousel();
-                    }
-            
-                    function goToSlide(index) {
-                        currentIndex = index;
-                        updateCarousel();
-                    }
-            
-                    // Button event listeners
-                    document.querySelector('.next').addEventListener('click', nextSlide);
-                    document.querySelector('.prev').addEventListener('click', prevSlide);
-            
-                    // Keyboard navigation
-                    document.addEventListener('keydown', (e) => {
-                        if (e.key === 'ArrowRight') nextSlide();
-                        if (e.key === 'ArrowLeft') prevSlide();
-                    });
-                </script>
-            </div>
-        </div>
-        <footer class="footers">
-          <div class="footers-container">
-              <div class="column">
-                  <img src="./images/gallery/tradersLogo.png" alt="Logo" class="logos">
-              </div>
-              <div class="column">
-                E-mail:  
-                <a href="mailto:newbusiness@weareimpero.com">traders@hyderabad.bits-pilani.ac.in</a>
-                  <br>
-                  <p>+91 6204468828</p>
-                  <br>
-                  <p>BITS Pilani Hyderabad Campus, Secunderabad, Telangana 500078</p>
-                
-              </div>
-              <div class="column">
-                <div class="linking">
-                  <div class="squaree"></div><a href="#">ABOUT US</a></div>
-                  <div class="linking">
-                  <div class="squaree"></div><a href="#">CONTACT US</a></div>
-                  <div class="linking">
-                  <div class="squaree"></div><a href="#">YEARBOOK</a></div>
-  
-  
-              </div>
-              <div class="column">
-                  <h3>FOLLOW US</h3>
-                  <div class="socials">
-                    <div class="linking">
-                      <div class="squaree"></div>
-                      <a href="https://www.facebook.com/groups/traders.bphc/">Facebook</a> </div><!-- Facebook -->
-                      <div class="linking"><div class="squaree"></div><a href="https://www.instagram.com/traders_bphc/">Instagram</a></div> <!-- Instagram -->
-                     <div class="linking"> <div class="squaree"></div><a href="https://www.linkedin.com/company/tradersatbphc/posts/?feedView=all">LinkedIn</a> <!-- Twitter --></div>
-                  </div>
-              </div>
-              
-          </div>
-          <div class="column" id="copy">
-            <h3>| All Rights Reserved © 2025 Traders@BPHC | </h3>
-          </div>
-      </footer>
+    <img src="./images/yearbook/bg_bull_bear.svg" class="bull-bear" alt="Bull and Bear">
+    <div class="title">
+        <h1 class="heading">Yearbook</h1>
     </div>
-    <script src="./JS_Files/gallery-main.js"></script>
-    <script src="https://kit.fontawesome.com/78ff11a15c.js" crossorigin="anonymous"></script>
+    <div class="timeline">
+        <div class="outer">
+            <!-- Timeline cards will be generated by JavaScript -->
+        </div>
+    </div>
+    <footer class="footers">
+      <div class="footers-container">
+          <div class="column">
+              <img src="./images/articles/tradersLogo.png" alt="Logo" class="logos">
+          </div>
+          <div class="column">
+            E-mail:  
+            <a href="mailto:newbusiness@weareimpero.com">traders@hyderabad.bits-pilani.ac.in</a>
+              <br>
+              <p>+91 6204468828</p>
+              <br>
+              <p>BITS Pilani Hyderabad Campus, Secunderabad, Telangana 500078</p>
+            
+          </div>
+          <div class="column">
+            <div class="linking">
+              <div class="squaree"></div><a href="#">ABOUT US</a></div>
+              <div class="linking">
+              <div class="squaree"></div><a href="#">CONTACT US</a></div>
+              <div class="linking">
+              <div class="squaree"></div><a href="#">YEARBOOK</a></div>
+
+
+          </div>
+          <div class="column">
+              <h3>FOLLOW US</h3>
+              <div class="socials">
+                <div class="linking">
+                  <div class="squaree"></div>
+                  <a href="https://www.facebook.com/groups/traders.bphc/">Facebook</a> </div><!-- Facebook -->
+                  <div class="linking"><div class="squaree"></div><a href="https://www.instagram.com/traders_bphc/">Instagram</a></div> <!-- Instagram -->
+                 <div class="linking"> <div class="squaree"></div><a href="https://www.linkedin.com/company/tradersatbphc/posts/?feedView=all">LinkedIn</a> <!-- Twitter --></div>
+              </div>
+          </div>
+          
+      </div>
+      <div class="column" id="copy">
+        <h3>| All Rights Reserved © 2025 Traders@BPHC | </h3>
+      </div>
+  </footer>
+  <script src="./JS_Files/yearbook.js"></script>
+  <script src="https://kit.fontawesome.com/78ff11a15c.js" crossorigin="anonymous"></script>
 </body>
+
 </html>

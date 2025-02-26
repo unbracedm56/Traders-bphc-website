@@ -1,5 +1,5 @@
 var tl=gsap.timeline();
- 
+
 tl.from(".brand",{
   y:-20,
   duration:1,
@@ -18,3 +18,7 @@ tl.from(".home-section",{
   duration:1,
   stagger:0.3,
 })
+
+
+
+

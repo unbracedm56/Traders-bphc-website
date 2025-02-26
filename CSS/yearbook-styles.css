@@ -1,0 +1,696 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+    background-color: #061117;
+    color: white;
+    font-family: 'Poppins', serif;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 5vh 5vw;
+    overflow-x: hidden;
+}
+
+/* Timeline Container */
+.timeline {
+    background: transparent;
+    margin: 20px auto;
+    padding: 20px;
+}
+  
+/* Card container */
+.card {
+    position: relative;
+    max-width: 400px;
+    cursor: pointer;
+}
+  
+/* setting padding based on even or odd */
+.card:nth-child(odd) {
+    padding: 30px 0 30px 30px;
+}
+.card:nth-child(even) {
+    padding: 30px 30px 30px 0;
+}
+/* Global ::before */
+.card::before {
+    content: "";
+    position: absolute;
+    width: 50%;
+    border: solid #39ff14;
+}
+  
+/* Setting the border of top, bottom, left */
+.card:nth-child(odd)::before {
+    left: 0px;
+    top: -4.5px;
+    bottom: -4.5px;
+    border-width: 5px 0 5px 5px;
+    border-radius: 50px 0 0 50px;
+}
+  
+/* Setting the top and bottom to "-5px" because earlier it was out of a pixel in mobile devices */
+@media only screen and (max-width: 400px) {
+    .card:nth-child(odd)::before {
+      top: -5px;
+      bottom: -5px;
+    }
+}
+  
+/* Setting the border of top, bottom, right */
+.card:nth-child(even)::before {
+    width: 60%;
+    right: -20px;
+    top: 0;
+    bottom: 0;
+    border-width: 5px 5px 5px 0;
+    border-radius: 0 50px 50px 0;
+}
+  
+/* Removing the border if it is the first card */
+.card:first-child::before {
+    border-top: 0;
+    border-top-left-radius: 0;
+}
+  
+/* Removing the border if it is the last card  and it's odd */
+.card:last-child:nth-child(odd)::before {
+    border-bottom: 0;
+    border-bottom-left-radius: 0;
+}
+  
+/* Removing the border if it is the last card  and it's even */
+.card:last-child:nth-child(even)::before {
+    border-bottom: 0;
+    border-bottom-right-radius: 0;
+}
+  
+/* Information about the timeline */
+.info {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    background: #343434;
+    color: #fbfcf8;
+    border-radius: 10px;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+  
+/* Title of the card */
+.box-title {
+    align-self: center;
+    color: #FBFCF8;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+  
+/* Timeline dot  */
+.box-title::before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 999px;
+    border: 3px solid #39ff14;
+}
+  
+/* text right if the card is even  */
+.card:nth-child(even) > .info > .box-title {
+    text-align: right;
+}
+  
+/* setting dot to the left if the card is odd */
+.card:nth-child(odd) > .info > .box-title::before {
+    left: -200px;
+}
+  
+/* setting dot to the right if the card is even */
+.card:nth-child(even) > .info > .box-title::before {
+    right: -190px;
+}
+
+.bull-bear {
+    top: 25%;
+    width: 80%;
+    position: fixed;
+    z-index: -1;
+    opacity: 0.15;
+}
+
+/* Container */
+.title {
+    justify-content: center;
+    align-items: center;
+    margin-top: 5vh;
+    max-width: 90vw;
+    margin-bottom: 55px;
+}
+
+/* Traders Title */
+.traders-bphc {
+    margin-top: 45px;
+    text-align: center;
+    color: #fbfcf8;
+    font-weight: bold;
+    font-size: clamp(1.2rem, 2vw, 2rem);
+}
+
+/* Main Heading */
+.heading {
+    font-family: 'Bruno Ace', sans-serif;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    text-align: center;
+    font-size: 6rem;
+    font-weight: bold;
+    color: #00ff00;
+    line-height: 1;
+}
+
+/* Description */
+.desc {
+    text-align: center;
+    color: #fbfcf8;
+    font-weight: bold;
+    font-size: clamp(1rem, 2.5vw, 2rem);
+}
+
+/* POR Content */
+.por-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: #1a1a1a;
+    border-radius: 0 0 10px 10px;
+    margin-top: 5px;
+}
+
+.por-content.active {
+    max-height: 500px;
+    padding: 15px;
+}
+
+.por-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.por-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #444;
+}
+
+.por-item:last-child {
+    border-bottom: none;
+}
+
+.position {
+    font-weight: 600;
+    color: #39ff14;
+}
+
+.name {
+    color: #fbfcf8;
+}
+
+.chevron {
+    transition: transform 0.3s ease;
+}
+
+.chevron.active {
+    transform: rotate(180deg);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    body {
+        align-items: center;
+        text-align: center;
+        padding: 5vh 5vw;
+    }
+
+    .title {
+        text-align: center;
+        margin: 0 auto;
+        max-width: 80vw;
+        margin-top: 5vh;
+    }
+
+    .heading {
+        font-family: 'Bruno Ace', serif;
+        font-size: clamp(3rem, 8vw, 6rem);
+        text-align: center;
+    }
+
+    .traders-bphc,
+    .desc {
+        font-size: clamp(1rem, 2vw, 1.5rem);
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .title {
+        margin-top: 5vh;
+    }
+
+    .heading {
+        font-family: 'Bruno Ace', serif;
+        font-size: clamp(2.5rem, 6vw, 4rem);
+    }
+
+    .traders-bphc,
+    .desc {
+        font-size: clamp(1rem, 2vw, 1.2rem);
+    }
+    
+    .info {
+        width: 300px;
+    }
+    
+    .card:nth-child(odd) > .info > .box-title::before {
+        left: -152.5px;
+    }
+    
+    .card:nth-child(even) > .info > .box-title::before {
+        right: -172.5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        margin: 0 auto;
+        max-width: 95vw;
+        text-align: center;
+    }
+
+    .heading {
+        font-family: 'Bruno Ace', serif;
+        font-size: clamp(2.5rem, 5vw, 3rem);
+    }
+
+    .traders-bphc,
+    .desc {
+        font-size: clamp(0.9rem, 2vw, 1rem);
+    }
+    
+    .info {
+        width: 250px;
+    }
+    
+    .card:nth-child(odd) > .info > .box-title::before {
+        left: -142.5px;
+    }
+    
+    .card:nth-child(even) > .info > .box-title::before {
+        right: -142.5px;
+    }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+}
+ 
+ul {
+  list-style: none;
+}
+ 
+nav {
+  font-family: "Climate Crisis", serif;
+  letter-spacing: 1px;
+  width: 100%;
+  font-weight: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  background-color: #061117;
+  color: white;
+  transition: transform 0.5s ease;
+  z-index: 1000;
+  top: 0;
+  position: fixed;
+  border-bottom: 2px solid rgba(75, 195, 219, 0.3);
+}
+ 
+.brand {
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+ 
+.brand img {
+  width: 40px;
+  height: 40px;
+}
+ 
+.center-links {
+  display: flex;
+  gap: 40px;
+  text-transform: uppercase;
+}
+ 
+.center-links a {
+  font-size: 1em;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 6px 10px;
+  transition: color 0.3s;
+}
+ 
+.center-links a:hover {
+  color: #4bc3db;
+}
+ 
+.right-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+ 
+.right-icons button {
+  background: none;
+  border: none;
+  font-size: 1em;
+  color: black;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+ 
+.right-icons .menu-btn {
+  font-family: "Climate Crisis", serif;
+  letter-spacing: 1px;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 8px 15px;
+}
+ 
+#menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  height: 100%;
+  background-color: rgba(34, 34, 34, 0.91);
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+ 
+  padding: 20px;
+  gap: 20px;
+  transition: right 0.5s ease;
+  z-index: 3;
+}
+ 
+.link-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+ 
+#menu a {
+  font-weight: 900;
+  font-size: 3em;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+ 
+#menu a:hover {
+  color: black;
+}
+ 
+.greyed-out {
+  color: rgba(255, 255, 255, 0.34) !important;
+}
+ 
+.close-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 1em;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 5000;
+}
+ 
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  transition: 0.5s ease-in;
+}
+ 
+.image-container img {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+ 
+  opacity: 1;
+  transition: 0.5s ease;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0);
+
+  position: relative; /* Positioned for mobile view */
+  z-index: 10; /* Above other elements */
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns */
+  gap: 20px;
+  font-size: 0.25em;
+}
+
+.footer a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 0.5em;
+}
+.footer a:hover {
+  background-color: #ed1062;
+}
+
+@media (max-width: 768px) {
+  .center-links {
+    display: none;
+  }
+
+  .menu-btn {
+    display: block;
+    font-size: 15px;
+  }
+
+  .image-container {
+    display: none;
+  }
+  .footer {
+    display: none;
+    justify-content: center;
+    align-content: center;
+    right: 0; /* Align to the right */
+    width: 60%; /* Adjust width for mobile */
+    height: 100%; /* Full height */
+  }
+
+  .footer-columns {
+    display: flex; /* Stack columns vertically */
+    flex-direction: column; /* Stack in a single column */
+    justify-content: center;
+    align-content: center;
+  }
+}
+@media (max-width: 435px) {
+  #menu {
+    width: 100%;
+  }
+  #menu a {
+    font-size: 1.5em;
+  }
+}
+main {
+  position: relative;
+  width: 100%;
+}
+@media (min-width: 912px) {
+  .right-icons button{
+    display: none;
+  }
+}
+@media (max-width: 1024px) {
+  .brand span{
+    display: none;
+  }
+}
+
+footer {
+  color: white;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  justify-content: center;
+}
+
+.border-box {
+  padding: 0;
+  width: 100%;
+  font-weight: 100;
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+  border: 1px white solid;
+  height: 200px;
+  border-style: dashed;
+}
+.border-box .logo img {
+  width: 80px;
+  height: 80px;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.footer .socials {
+  display: flex;
+  gap:10px;
+  flex-direction: column;
+}
+
+.footers {
+  background: #000000;
+  color: rgb(255, 255, 255);
+  padding: 50px 20px;
+}
+
+.footers-container {
+  padding: 6px;
+  border-top: rgb(255, 255, 255) 1px solid;
+  width: 100%;
+  background: #000000;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.footers .column {
+  flex: 1;
+  min-width: 250px;
+  margin: 10px;
+}
+
+.footers .column h3 {
+    color: #FBFCF8;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.footers .column a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  display: block;
+  margin-top: 5px;
+  font-size: 1rem;
+}
+
+.footers .column a:hover {
+  text-decoration: underline;
+}
+
+.socials {
+  display: flex;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.socials a {
+  font-size: 1.5rem;
+  color: rgb(0, 0, 0);
+}
+
+.logos {
+  width: 150px;
+  margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+  .contact-section h1 {
+      font-size: 3rem;
+  }
+  .footer-container {
+      flex-direction: column;
+      text-align: center;
+  }
+}
+.linking{
+  display: flex;
+  align-items: center;
+}
+#copy{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  border-top: solid 1px rgb(255, 255, 255);
+  border-bottom: solid 1px white;
+
+  padding: 6px;
+}
+#copy h3{
+  font-size: small;
+}
+
+@media (max-width: 1024px) {
+    .article_1 {
+        flex-direction: column; 
+        align-items: center;
+        text-align: center;
+    }
+
+    .img_1 img {
+        width: 100%; 
+        max-width: 400px; 
+    }
+
+    .summary_1 {
+        width: 100%;
+        text-align: center;
+    }
+}
